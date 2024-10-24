@@ -1,0 +1,64 @@
+/* Default view */
+/* 1. Logo animation */
+
+/* 2. Body */
+body {
+    font-family: 'Poppins', serif;
+    background-color: #f1f1f1;
+    background-image: url('/images/concrete_seamless.png');
+}
+
+/* 3. Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 4. Nav_links */
+.nav_links {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 5. Visited links */
+a:visited {
+}
+
+/* 7 */
+/* .card {
+    flex-basis: 450px;
+} */
+
+/* 8 */
+/* .pricing {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+} */
+
+@media screen and (min-width: 900px) {
+    header {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+
+    .nav_links {
+        flex-direction: row;
+    }
+
+    .card {
+        flex-basis: 275px;
+    }
+
+    .pricing {
+        align-items: center;
+    }
+}
+
+@media all and (prefers-reduced-motion: reduce) {
+
+}
+
+
