@@ -1,64 +1,166 @@
-/* Default view */
+/* Default mobile view */
 /* 1. Logo animation */
-
-/* 2. Body */
-body {
-    font-family: 'Poppins', serif;
-    background-color: #f1f1f1;
-    background-image: url('/images/concrete_seamless.png');
+/* Logo starts with width 25px and opacity 0 to width 475px and opacity 1 using keyframes */
+@keyframes mymove {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+    to {
+        width: 475px;
+        opacity: 1
+    }
+}
+/* Logo animation last 5 second and remain at the end state of the animation using forwards*/
+#logo {
+    animation: mymove 5s forwards;
 }
 
-/* 3. Header */
+/* 2. Body */
+/* Use google font poppins and backup font serif with a background
+image "concrete_seamless.png" and backup background color #f1f1f1 */
+body {
+    font-family: 'Poppins', serif;
+    background-image: url('../images/concrete_seamless.png');
+    background-color: #f1f1f1;
+}
+
+/* 3. All headers layout */
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* 4. Nav_links */
+/* 4. Nav_links class layout */
 .nav_links {
     display: flex;
     flex-direction: column;
 }
 
-/* 5. Visited links */
+/* 5. Visited links remain the same color */
 a:visited {
+    color: #0000EE;
 }
 
-/* 7 */
-/* .card {
-    flex-basis: 450px;
-} */
+/* 6. Headers that are direct children of card class */
+/* Style with background color #288088, 2px solid border with #45ADAD color,
+20 px top and bottom paddings, and 50 px rounded top borders */
+.card > header {
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-radius: 50px 50px 0 0;
+}
 
-/* 8 */
-/* .pricing {
+/* 7. Card class layout */
+.card {
+    flex-basis: 450px;
+    border-radius: 50px 50px 0 0; /* connect to #6 to make the white corners disappear */
+}
+
+/* 8. Pricing class layout */
+.pricing {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-} */
+}
 
+/* 9. Images in Gallery class */
+/* Use a solid 10px border with a color of #50C7C7, 10px margin on all four sides and a width of 300px.  */
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* 10. Gallery class layout */
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+/* Styling for screen size greater than 900px */
 @media screen and (min-width: 900px) {
+    /* 11. All headers layout */
     header {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
     }
 
+    /* Nav_links class layout */
     .nav_links {
         flex-direction: row;
     }
 
+    /* 12. Card class layout */
     .card {
         flex-basis: 275px;
     }
 
+    /* Pricing class layout */
     .pricing {
         align-items: center;
     }
+
+    /* 13. The first header remain visible when scrolled down */
+    body > header {
+        position: sticky;
+        top: 0;
+    }
 }
 
+/* 14. Disable animation when prefers-reduce-motion is set to reduce */
 @media all and (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;
+    }
+}
 
+/* Style for print view */
+@media print {
+    /* 15 + 16. Body */
+    /* Use Arial font with a backup font Helvetica.
+    Remove background image */
+    body {
+        font-family: Arial, Helvetica;
+        background-image: none;
+    }
+
+    /* 17. Nav_links class layout */
+    .nav_links {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    /* 18. Pricing class layout */
+    .pricing {
+        align-items: flex-end;
+        flex-wrap: nowrap;
+    }
+
+    /* 19. Card class layout and include 2px solid border with color value #45ADDD */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* 20. Remove the entire Gallery section */
+    #gallery, .gallery {
+        display: none;
+    }
+
+    /* 21. Add thumb up icon after the second list item in the Card class */
+    .card li:nth-child(2)::after {
+        content: "\01F44D";
+    }
 }
 
 
